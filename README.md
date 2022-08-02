@@ -1,1 +1,1 @@
-This is a beta of the final project, every day new changes 
+This is the stock figure from thingiverse, and there is the scaled version for fun  
