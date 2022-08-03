@@ -1,4 +1,4 @@
-# Project-Eva-01
+# Project Eva 01
 
 This repository will hold all files relative to the construction, AI and microcontroller programming necessary to build a scaled down model of Evangelion unit 01.
 
