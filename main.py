@@ -50,7 +50,7 @@ class Test(Ui_Pannello):
         #ser.read
         #print("continuing walking loop, client reports no warning, check 3dUI for more information")
     #def boringAI(self):
-        #future mercury will definitely love working on the ai backend :skull:
+        #mercury will definitely love working on the ai backend :skull:
 
 app = QtWidgets.QApplication(sys.argv)
 Pannello = QtWidgets.QWidget()
