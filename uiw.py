@@ -39,7 +39,7 @@ class Ui_Pannello(object):
         self.pushButton_6.setObjectName("pushButton_6")
         self.webView = QtWebKitWidgets.QWebView(Pannello)
         self.webView.setGeometry(QtCore.QRect(360, 60, 431, 361))
-        self.webView.setUrl(QtCore.QUrl("https://consent.google.it/m?continue=https://www.google.it/maps?hl%3Dit&gl=IT&m=0&pc=m&uxe=eomtm&hl=it&src=1"))
+        self.webView.setUrl(QtCore.QUrl("https://maps.google.it/maps?hl=it"))
         self.webView.setObjectName("webView")
         self.textEdit = QtWidgets.QTextEdit(Pannello)
         self.textEdit.setGeometry(QtCore.QRect(10, 70, 291, 41))
