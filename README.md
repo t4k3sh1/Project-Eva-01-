@@ -5,11 +5,13 @@ This repository will hold all files relative to the construction, AI and microco
 Files will be split up into 3 branches: main, custom eva and stock figure; #main will contain all the code, mostly built in python, qt and arduino-cpp; custom eva will hold all the 3d models and design assets we used to build the actual figure, and, once we'll be happy with how the casing turned out, it'll also have a zip file containing STLs and printing instructions. Stock figure is a mirror for the stock 3d files we obtained on [thingiverse](https://www.thingiverse.com/thing:1805621)
 
 ## Requirements
+Since this project is being built with cross-platform interfaces and interoperability in mind, we are 100% going to port the code to windows, or atleast make an installer with all the required dependencies, but for now, we have shifted most of our focus to linux based OSs for a variety of reasons, please keep it in mind if you want to build/collaborate
 - Python >= 3.8
 - PyQt5 (Qmake, working on linux systems only for now)
 - PySerial
 - Python.sys
-
+- OpenCV3
+- Numpy
 ## python-esp interfacing
 
 We thought about building the eva on a drunken night while in vacation so we really had no clue on what to build, once we returned back to our city we decided it was a good idea to use python as a host for all the heavy processing, and an esp-8266 as the client, alongside two arduino nanos to control the body. At the time of writing we already put down a somewhat decent base for this communication protocol, and we are currently working on a bluetooth fallback method in case pyserial over wifi fails.
