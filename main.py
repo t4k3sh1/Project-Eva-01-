@@ -1,9 +1,10 @@
 from uiw import *
 import sys
 import serial
+import time 
 #porta sees 
 with serial.Serial() as ser:
-    ser.baudrate = 19200
+    ser.baudrate = 115200
     
 
 
@@ -16,15 +17,53 @@ class Test(Ui_Pannello):
         self.pushButton_3.clicked.connect(self.wUnimplemented)#self.slowWalk
         self.pushButton_4.clicked.connect(self.wUnimplemented)#self.fastWalk
         self.pushButton_5.clicked.connect(self.wUnimplemented)#self.boringAI
+        #self.checkBox.isChecked.connect(self.ForceBT)
+    def ForceBT(self):
+        if ser.lostParity():
+            ser.close()
+            serialPort = "j"
+            ser.open()
+            self.serialStart
+        ()
 
     def Serialstart(self):
+        fatalw = "0-0W"
+        mWarn = "NFW-1180"
+        fhs = "fhs"
+        # forced hardware serial, used to force a start without attached limbs/in development mode
+        testkeys = "c5edb461-f726-4f12-bb6b-490897bfed75"
+        print("loaded debug keypair")
+        print(testkeys)
+        prodkeys = "" #production keys have been removed since we are still actively working on it
         serialUID = self.textEdit.toPlainText()
         print(serialUID) #debug code :hahaball:
         ser.port = serialUID
         ser.open()
         print(ser.name)
-        hs = ser.readline()
-        print(hs)
+        ser.write(b"s")
+        time.sleep(1)
+        buff = ser.readline()
+        decbuf = buff.decode()
+        resp = decbuf.strip()
+        print (resp)
+        if resp == fatalw:
+            print("Warning: device operating in unsafe/incomplete mode, unable to connect to motor system")
+            print("No I4C interface detected, consent plug not detected/key mismatch")
+            print("proceding to activation may cause major trouble to the software and to the hardware")
+        buff = ""
+        buff = ser.readline()
+        decbuf = buff.decode()
+        resp = decbuf.strip()
+        ser.write(b"dd")
+        if resp == fhs:
+            buff = ""
+            buff = ser.readline()
+            decbuf = buff.decode()
+            resp = decbuf.strip()
+            print(resp)
+        if resp == testkeys:
+            print("Setting hl to it/IT - UTF8")
+            print("attivazione riuscita. Il programma sta eseguendo in modalità userdebug con una chiave di test caricata.")
 
     def Quit(self):
         sys.exit()
@@ -39,18 +78,17 @@ class Test(Ui_Pannello):
         #need reconnection to restore stream
     def wUnimplemented(self):
         print("Uh Oh! it looks like the feature you're trying to use is still being worked on by our team, please wait patiently and check for repository updates often!")
-
-
     #def slowWalk(self):
-        #ser.write(b"\n")
-        #ser.read
+        #for i in range 20
+            #ser.write(b"\n")
+            #ser.read
         #print("continuing walking loop, client reports no warning, check 3dUI for more information")
     #def fastWalk(self):
         #ser.write(b"\n")
         #ser.read
         #print("continuing walking loop, client reports no warning, check 3dUI for more information")
     #def boringAI(self):
-        #mercury will definitely love working on the ai backend :skull:
+        #future mercury will definitely love working on the ai backend :skull:
 
 app = QtWidgets.QApplication(sys.argv)
 Pannello = QtWidgets.QWidget()
