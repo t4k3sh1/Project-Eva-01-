@@ -1,12 +1,10 @@
-from uiw import *
-import sys
+from uiw2 import *
 import serial
-import time 
+import time
+import sys
 #porta sees 
 with serial.Serial() as ser:
     ser.baudrate = 115200
-    
-
 
 class Test(Ui_Pannello):
     def __init__(self, window):
@@ -30,11 +28,11 @@ class Test(Ui_Pannello):
         fatalw = "0-0W"
         mWarn = "NFW-1180"
         fhs = "fhs"
-        # forced hardware serial, used to force a start without attached limbs/in development mode
+        # forced hardware serial, used to force a start in development mode
         testkeys = "c5edb461-f726-4f12-bb6b-490897bfed75"
         print("loaded debug keypair")
         print(testkeys)
-        prodkeys = "" #production keys have been removed since we are still actively working on it
+        prodkeys = "" #production keys have yet to be rolled out
         serialUID = self.textEdit.toPlainText()
         print(serialUID) #debug code :hahaball:
         ser.port = serialUID
@@ -90,12 +88,9 @@ class Test(Ui_Pannello):
     #def boringAI(self):
         #future mercury will definitely love working on the ai backend :skull:
 
+# draw main window and start event listener
 app = QtWidgets.QApplication(sys.argv)
 Pannello = QtWidgets.QWidget()
-
 ui = Test(Pannello)
-
 Pannello.show()
 app.exec_()
-
-
