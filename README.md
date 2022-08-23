@@ -10,8 +10,15 @@ Since this project is being built with cross-platform interfaces and interoperab
 - PyQt5 (Qmake, working on linux systems only for now)
 - PySerial
 - Python.sys
-- OpenCV3
-- Numpy
+- OpenCV3*
+- Numpy*
+- Logging*
+
+## Tests
+Since aug. 9th, our development team started posing some of the groundwork necessary for the bulk of the software we'll need, the AI system for navigation, walking, interfacing and other features that we don't want to spoil yet. All of the tests we are currently working on will be uploaded in the /tests/ folder so you'll be able to see for yourself how we are actively working on the project. Eventually we will delete the test folder and integrate everything into main.py, but for now, have fun exploring the little demos our team has worked on :D
+
+Additional requirements for tests will be written in the requirements section, but they'll be marked with an asterisk
+
 ## python-esp interfacing
 
 We thought about building the eva on a drunken night while in vacation so we really had no clue on what to build, once we returned back to our city we decided it was a good idea to use python as a host for all the heavy processing, and an esp-8266 as the client, alongside two arduino nanos to control the body. At the time of writing we already put down a somewhat decent base for this communication protocol, and we are currently working on a bluetooth fallback method in case pyserial over wifi fails.
